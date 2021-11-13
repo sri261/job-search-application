@@ -1,6 +1,7 @@
 import React from "react";
 import { IGeneral } from "../../interfaces/job";
-import Spinner from "../Spinner";
+import CancelIcon from "../icons/CancelIcon";
+import Spinner from "../icons/Spinner";
 
 interface IProps {
   options: IGeneral[];
@@ -18,6 +19,8 @@ function SelectDropDown({
   const onChangeHandler = (e: React.FormEvent<HTMLSelectElement>) => {
     onChange && onChange(e);
   };
+
+  const cancelClickHandler = () => {};
 
   return (
     <div className="input-group mb-3">
@@ -37,6 +40,17 @@ function SelectDropDown({
           </option>
         ))}
       </select>
+
+      {/* {!loading && (
+        <span
+          className="input-group-text"
+          id="basic-addon1"
+          onClick={cancelClickHandler}
+        >
+          <CancelIcon />
+        </span>
+      )} */}
+
       {loading && <Spinner />}
     </div>
   );
