@@ -20,7 +20,7 @@ function ListingPage() {
   }, []);
 
   return (
-    <div>
+    <div className="container mt-5">
       <SearchBox />
     </div>
   );

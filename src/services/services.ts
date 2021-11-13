@@ -14,3 +14,13 @@ export const getJob = async () =>
 
 export const getLookUps = async (lookup: LookUp) =>
   api.get(`/api/v1/${lookup}`).then(extractStandardResponseData);
+
+export const getJobByFilter = async (
+  q: string,
+  loc?: string,
+  dept?: string,
+  fun?: string
+) =>
+  api
+    .get(`/api/v1/jobs`, { params: { q, loc, dept, fun } })
+    .then(extractStandardResponseData);
