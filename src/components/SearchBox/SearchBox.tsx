@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IGeneral } from "../../interfaces/job";
-import { getLookUps, LookUp } from "../../services/services";
+import { getJobByFilter, getLookUps, LookUp } from "../../services/services";
 import SearchBar from "../SearchBar/SearchBar";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
 
@@ -13,6 +13,19 @@ function SearchBox() {
   const [departments, setDepartments] = useState<IGeneral[]>([]);
   const [locations, setLocations] = useState<IGeneral[]>([]);
   const [functions, setFunctions] = useState<IGeneral[]>([]);
+  const [searchOptions, setSearchOptions] = useState<{ value: string }[]>([
+    { value: "sample" },
+    { value: "new" },
+  ]);
+
+  const searchHandler = (e: string) => {
+    console.log(e);
+    getJobByFilter(e)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {});
+  };
 
   useEffect(() => {
     Promise.all([
@@ -35,7 +48,12 @@ function SearchBox() {
     <div>
       <div className="row">
         <div className="row">
-          <SearchBar />
+          <SearchBar
+            onChange={searchHandler}
+            onSubmit={(e) => {}}
+            options={searchOptions}
+            loading={true}
+          />
         </div>
         <div className="row">
           <div className="col-4">
