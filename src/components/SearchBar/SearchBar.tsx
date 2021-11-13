@@ -2,7 +2,7 @@ import Spinner from "../icons/Spinner";
 import SearchIcon from "./SearchIcon";
 interface IProps {
   loading?: boolean;
-  options?: { value: string }[];
+  options?: { value: string; id: number }[];
   onChange?: (e: string) => void;
   onSubmit?: (e: string) => void;
 }
@@ -15,9 +15,11 @@ function SearchBar({
 }: IProps) {
   const onSubmitHandler = (e: any) => {
     e.preventDefault();
+    console.log("submit", e.target[0].value, e.target[0].id);
     onSubmit && onSubmit(e.target[0].value);
   };
   const onChangeHandler = (e: any) => {
+    console.log("change", e.currentTarget[0].value);
     onChange && onChange(e.currentTarget[0].value);
   };
 
@@ -35,8 +37,14 @@ function SearchBar({
           placeholder="Type to search..."
         />
         <datalist id="datalistOptions">
-          {options.map((option, i) => (
-            <option value={option.value} key={i} />
+          {options.map((option) => (
+            <option
+              value={option.value}
+              key={option.id}
+              onSubmit={(e) => {
+                console.log("test", e);
+              }}
+            />
           ))}
         </datalist>
         <button
