@@ -8,7 +8,7 @@ interface IProps {
 }
 function Header({ job }: IProps) {
   return (
-    <div>
+    <div className="mt-5">
       <p className="fs-5 fw-bold">
         {job.department.title} At Teknorix Systems Goa
       </p>

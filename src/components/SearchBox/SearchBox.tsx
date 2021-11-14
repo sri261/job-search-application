@@ -147,7 +147,7 @@ function SearchBox({ onChange, isLoading }: IProps) {
       </div>
       <div className="row bg-light mt-3 p-4">
         <div className="col-10">
-          {Object.keys(filters).map((key) => {
+          {Object.keys(filters || {}).map((key) => {
             return (
               filters[key as keyof IFilters].title && (
                 <span className="badge bg-white text-body">

@@ -16,8 +16,8 @@ export const getJobs = async (
     .get(`/api/v2/jobs`, { params: { q, loc, dept, fun } })
     .then(extractStandardResponseData);
 
-export const getJob = async () =>
-  api.get("/api/v2/jobs/42245").then(extractStandardResponseData);
+export const getJob = async (id: string) =>
+  api.get(`/api/v2/jobs/${id}`).then(extractStandardResponseData);
 
 export const getLookUps = async (lookup: LookUp) =>
   api.get(`/api/v2/${lookup}`).then(extractStandardResponseData);
