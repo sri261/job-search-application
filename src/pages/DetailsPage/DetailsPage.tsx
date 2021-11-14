@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import Spinner from "../../components/icons/Spinner";
 import Navbar from "../../components/Navbar/Navbar";
 import OtherOpeanings from "../../components/OtherOpeanings/OtherOpeanings";
+import ShareOpeanings from "../../components/ShareOpeanings";
 import { IJob } from "../../interfaces/job";
 import { getJob } from "../../services/services";
 
@@ -50,6 +51,7 @@ function DetailsPage() {
               </div>
               <div className="col-3">
                 <OtherOpeanings />
+                <ShareOpeanings />
               </div>
             </div>
           </>

@@ -1,8 +1,6 @@
 import { useHistory } from "react-router";
 import { IJob } from "../../interfaces/job";
 import Button from "../Button";
-import BuildingIcon from "../icons/BuildingIcon";
-import LocationIcon from "../icons/LocationIcon";
 import InfoBar from "../InfoBar";
 
 interface IProps {

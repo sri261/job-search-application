@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Spinner from "../../components/icons/Spinner";
-import JobCard from "../../components/JobCard/JobCard";
+import JobsSection from "../../components/JobsSection";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import { IJob } from "../../interfaces/job";
+import { modifyArray } from "../../utils/utils";
 
 function ListingPage() {
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -12,7 +13,7 @@ function ListingPage() {
   return (
     <div>
       <Navbar />
-      <div className="container mt-2">
+      <div className="container mt-3">
         <div className="row">
           <SearchBox onChange={setJobs} isLoading={setLoading} />
         </div>
@@ -23,8 +24,8 @@ function ListingPage() {
             </div>
           ) : (
             <div className="list-group mt-5">
-              {jobs.map((job: IJob) => (
-                <JobCard job={job} />
+              {modifyArray(jobs).map((jobs: IJob[], i) => (
+                <JobsSection jobsArray={jobs} key={i} />
               ))}
             </div>
           )}

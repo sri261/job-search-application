@@ -7,7 +7,7 @@ function BuildingIcon() {
       width="16"
       height="16"
       fill="currentColor"
-      className="bi bi-building"
+      className="bi bi-building mb-1"
       viewBox="0 0 16 16"
     >
       <path

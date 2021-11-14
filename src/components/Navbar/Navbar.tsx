@@ -6,12 +6,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container">
-        <a
-          className="navbar-brand"
-          onClick={() => {
-            history.push("/listing");
-          }}
-        >
+        <a className="navbar-brand" onClick={() => history.push("/listing")}>
           Job Listing Application (Sriharsh Dubale)
         </a>
       </div>

@@ -5,6 +5,7 @@ import { getJobs, getLookUps, LookUp } from "../../services/services";
 import CancelIcon from "../icons/CancelIcon";
 import SearchBar from "../SearchBar/SearchBar";
 import SelectDropDown from "../SelectDropDown/SelectDropDown";
+import FilterTag from "./FilterTag";
 
 interface IProps {
   onChange?: (jobs: IJob[]) => void;
@@ -52,9 +53,7 @@ function SearchBox({ onChange, isLoading }: IProps) {
           jobs.map((job: IJob) => ({ value: job.title, id: job.id }))
         );
       })
-      .catch((err) => {
-        isLoadingHandler(false);
-      });
+      .catch(() => isLoadingHandler(false));
   };
 
   useEffect(() => {
@@ -80,10 +79,9 @@ function SearchBox({ onChange, isLoading }: IProps) {
   }, []);
 
   return (
-    <div>
-      <div className="row bg-light">
-        <div className="col"></div>
-        <div className="row">
+    <div className="mt-2">
+      <div className="row p-4" style={{ backgroundColor: "#f4f4f4" }}>
+        <div className="row mt-2">
           <SearchBar
             onChange={(e) => {
               if (e.length === 0) {
@@ -145,25 +143,23 @@ function SearchBox({ onChange, isLoading }: IProps) {
           </div>
         </div>
       </div>
-      <div className="row bg-light mt-3 p-4">
+      <div className="row mt-3 p-4" style={{ backgroundColor: "#f4f4f4" }}>
         <div className="col-10">
           {Object.keys(filters || {}).map((key) => {
             return (
               filters[key as keyof IFilters].title && (
-                <span className="badge bg-white text-body">
-                  {filters[key as keyof IFilters].title}
-                  <CancelIcon
-                    onClick={() => {
-                      history.push({
-                        pathname: "/listing",
-                        state: {
-                          ...(location.state as typeof location),
-                          [key]: {},
-                        },
-                      });
-                    }}
-                  />
-                </span>
+                <FilterTag
+                  label={filters[key as keyof IFilters].title}
+                  onCancel={() => {
+                    history.push({
+                      pathname: "/listing",
+                      state: {
+                        ...(location.state as typeof location),
+                        [key]: {},
+                      },
+                    });
+                  }}
+                />
               )
             );
           })}

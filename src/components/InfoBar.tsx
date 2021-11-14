@@ -13,7 +13,7 @@ function InfoBar({ job, small }: IProps) {
       <BuildingIcon />
       <span className={`fs-${small ? 7 : 5} mx-1`}>{job.department.title}</span>
       <LocationIcon />
-      <span className={`fs-${small ? 7 : 5} mx-2`}>{job.location.title}</span>
+      <span className={`fs-${small ? 7 : 5} mx-1`}>{job.location.title}</span>
       {!small && <span className="badge bg-secondary mx-2">{job.type}</span>}
     </div>
   );

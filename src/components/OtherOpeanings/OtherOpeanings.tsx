@@ -28,6 +28,9 @@ function OtherOpeanings() {
       }}
     >
       <p className="fs-5 fw-bold">OTHER JOB OPEANINGS</p>
+      <div
+        style={{ backgroundColor: "#4d94e4", height: "5px", width: "80px" }}
+      ></div>
       {loading ? (
         <div className="w-100 d-flex justify-content-center">
           <Spinner />
