@@ -6,17 +6,8 @@ export enum LookUp {
   functions = "functions",
 }
 
-export const getAllJobs = async () =>
-  api.get("/api/v2/jobs").then(extractStandardResponseData);
-
-export const getJob = async () =>
-  api.get("/api/v2/jobs/42245").then(extractStandardResponseData);
-
-export const getLookUps = async (lookup: LookUp) =>
-  api.get(`/api/v2/${lookup}`).then(extractStandardResponseData);
-
-export const getJobByFilter = async (
-  q: string,
+export const getJobs = async (
+  q?: string,
   loc?: number | null,
   dept?: number | null,
   fun?: number | null
@@ -24,3 +15,9 @@ export const getJobByFilter = async (
   api
     .get(`/api/v2/jobs`, { params: { q, loc, dept, fun } })
     .then(extractStandardResponseData);
+
+export const getJob = async () =>
+  api.get("/api/v2/jobs/42245").then(extractStandardResponseData);
+
+export const getLookUps = async (lookup: LookUp) =>
+  api.get(`/api/v2/${lookup}`).then(extractStandardResponseData);
