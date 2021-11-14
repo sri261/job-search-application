@@ -1,8 +1,8 @@
 export function debounce() {}
 
-// export const consoleLog()=>{
-
-// }
+export const consoleLog = (label?: string, data?: any) => {
+  console.log(`%c ${label}`, "background: #222; color: #bada55", data);
+};
 
 // console.log("%c Oh my heavens! ", "background: #222; color: #bada55");
 

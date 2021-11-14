@@ -25,7 +25,8 @@ function SelectDropDown({
   return (
     <div className="input-group mb-3">
       <select
-        defaultValue={"DEFAULT"}
+        // defaultValue={"DEFAULT"}
+        value={"DEFAULT"}
         disabled={loading}
         className="form-select"
         id="inputGroupSelect01"
@@ -35,22 +36,16 @@ function SelectDropDown({
           {placeholder}
         </option>
         {options.map((option: IGeneral) => (
-          <option value={option.title} key={option.id}>
+          <option
+            // value={option.title}
+            value={JSON.stringify({ id: option.id, title: option.title })}
+            key={option.id}
+            id={option.id.toString()}
+          >
             {option.title}
           </option>
         ))}
       </select>
-
-      {/* {!loading && (
-        <span
-          className="input-group-text"
-          id="basic-addon1"
-          onClick={cancelClickHandler}
-        >
-          <CancelIcon />
-        </span>
-      )} */}
-
       {loading && <Spinner />}
     </div>
   );

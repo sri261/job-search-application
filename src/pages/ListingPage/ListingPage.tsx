@@ -21,7 +21,7 @@ function ListingPage() {
 
   return (
     <div className="container mt-5">
-      <SearchBox />
+      <SearchBox onChange={setJobs} />
     </div>
   );
 }
