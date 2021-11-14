@@ -1,6 +1,5 @@
 import React from "react";
 import { IGeneral } from "../../interfaces/job";
-import CancelIcon from "../icons/CancelIcon";
 import Spinner from "../icons/Spinner";
 
 interface IProps {
@@ -20,8 +19,6 @@ function SelectDropDown({
     onChange && onChange(e);
   };
 
-  const cancelClickHandler = () => {};
-
   return (
     <div className="input-group mb-3">
       <select
@@ -37,7 +34,6 @@ function SelectDropDown({
         </option>
         {options.map((option: IGeneral) => (
           <option
-            // value={option.title}
             value={JSON.stringify({ id: option.id, title: option.title })}
             key={option.id}
             id={option.id.toString()}
@@ -46,7 +42,11 @@ function SelectDropDown({
           </option>
         ))}
       </select>
-      {loading && <Spinner />}
+      {loading && (
+        <span className="input-group-text" id="basic-addon1">
+          <Spinner size="sm" />
+        </span>
+      )}
     </div>
   );
 }
